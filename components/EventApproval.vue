@@ -229,6 +229,7 @@
                   <el-button style="background-color: lightgreen" @click="postEvent">Post this event on the site</el-button>
                   <el-button style="background-color: #e6a23c" @click="saveEdits">Save Edits on this Submission, but do not post</el-button>
                   <el-button style="background-color: #f56c6c" @click="setProcessedToOn">Delete this Submission w/o Posting</el-button>
+                  <el-button style="background-color: #f56c6c" @click="saveTest">Test</el-button>
                 </div>
               </el-tab-pane>
             </el-tabs>
@@ -451,6 +452,45 @@
 
 
   },
+        saveTest:function(){
+
+          var vm = this;
+          $.ajax({
+              url: dataURL,
+              data: {
+                testObject:JSON.stringify(vm.eventDetails[0]),
+                method: 'testObjectSubmission',
+                returnFormat: 'json'
+              },
+              method: 'POST',
+              dataType: "json",
+              success: function (d, r, o) {
+
+                console.log(d);
+                //vm.backButtonClicked();
+              },
+              error: function (jqXHR, exception) {
+                var msg = '';
+                if (jqXHR.status === 0) {
+                  msg = 'Not connect.\n Verify Network.';
+                } else if (jqXHR.status == 404) {
+                  msg = 'Requested page not found. [404]';
+                } else if (jqXHR.status == 500) {
+                  msg = 'Internal Server Error [500].';
+                } else if (exception === 'parsererror') {
+                  msg = 'Requested JSON parse failed.';
+                } else if (exception === 'timeout') {
+                  msg = 'Time out error.';
+                } else if (exception === 'abort') {
+                  msg = 'Ajax request aborted.';
+                } else {
+                  msg = 'Uncaught Error.\n' + jqXHR.responseText;
+                }
+                alert(msg);
+              },
+            }
+          )
+        } ,
         postEvent:function(){
           var vm = this;
           if (!vm.eventDetails[0].DISP_NUM2){
