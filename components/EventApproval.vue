@@ -229,7 +229,9 @@
                   <el-button style="background-color: lightgreen" @click="postEvent">Post this event on the site</el-button>
                   <el-button style="background-color: #e6a23c" @click="saveEdits">Save Edits on this Submission, but do not post</el-button>
                   <el-button style="background-color: #f56c6c" @click="setProcessedToOn">Delete this Submission w/o Posting</el-button>
+                  <!---
                   <el-button style="background-color: #f56c6c" @click="saveTest">Test</el-button>
+                  --->
                 </div>
               </el-tab-pane>
             </el-tabs>
@@ -316,7 +318,7 @@
           vm.eventDetails.STARTDATE = moment(vm.eventDetails.STARTDATE,'DD/MM/YYY').format('DD/MM/YYY')
         },
         getOrgID: function () {
-          var vm = this;
+          let vm = this;
           console.log('in getting org ID -- selectedEventID = ' + vm.selectedEventID);
           axios.get(dataURL + '?method=getOrgID&id=' + vm.selectedEventID)
             .then(function (response) {

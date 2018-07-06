@@ -339,6 +339,7 @@
               //console.log('new org  ' + d.ORG_NUM);
               vm.setVenueToPublished();
               vm.approval = true;
+              vm.addBlankVenue();
 
             },
             error: function (jqXHR, exception) {
