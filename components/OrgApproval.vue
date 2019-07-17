@@ -168,8 +168,8 @@
               value: 'margo.crabtree@gmail.com',
               label: 'Margo'
             }, {
-              value: 'sfam@sbcglobal.net',
-              label: 'Betsy'
+              value: 'sfartsmonthly@gmail.com',
+              label: 'Geraldine'
             }, {
               value: 'lrlarson@larsonassoc.org',
               label: 'Larry'
@@ -469,6 +469,8 @@
   .btn-danger{
     margin-top: 20px;
   }
-
+  .el-select-dropdown el-popper is-multiple{
+    display: inline-block;
+  }
 
 </style>
