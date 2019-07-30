@@ -10,7 +10,7 @@
 
       <br />
       <br />
-    <el-input placeholder="password" v-model="password" label="Password"></el-input>
+    <el-input placeholder="password" show-password="false" v-model="password" label="Password" type="password"></el-input>
       <br />
       <br /> <br />
       <br />
