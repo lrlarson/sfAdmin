@@ -165,8 +165,8 @@
             states:[],
             message:'',
             options: [{
-              value: 'margo.crabtree@gmail.com',
-              label: 'Margo'
+              value: 'sfartseditor@gmail.com',
+              label: 'Catherinec'
             }, {
               value: 'sfartsmonthly@gmail.com',
               label: 'Geraldine'

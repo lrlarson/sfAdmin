@@ -815,6 +815,7 @@
               dateDiff,
 
               venue_name:vm.eventDetails[0].VENUE_NAME,
+                editor:  global.$user.name,
 
               method: 'postNewEventRecord',
               returnFormat: 'json'

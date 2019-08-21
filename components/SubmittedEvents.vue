@@ -30,6 +30,7 @@
               <th scope="col">Prod. Org.</th>
               <th scope="col">Event</th>
               <th scope="col">Start Date</th>
+              <th scope="col">Submitter</th>
             </tr>
           </thead>
           <tbody>
@@ -37,6 +38,7 @@
               <td>{{event.ORG_NAME}}</td>
               <td>{{event.EVENT_NAME}}</td>
               <td>{{event.STARTDATE | moment("dddd, MMMM Do")}}</td>
+              <td>{{event.EMAIL}}</td>
             </tr>
           </tbody>                                 `
         </table>

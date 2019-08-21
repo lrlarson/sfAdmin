@@ -50,7 +50,10 @@
           axios.get(dataURL + '?method=checkPassword&email=' + vm.email + '&password=' + vm.password )
             .then(function (response) {
               if(response.data[0].COUNT == 1) {
-                vm.gotoApprovals();
+                  vm.$user.copy({
+                      name: vm.email
+                  })
+                  vm.gotoApprovals();
               }else {
                  vm.message = 'Not Valid';
                  vm.email = '';
