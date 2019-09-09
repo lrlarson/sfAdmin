@@ -266,6 +266,25 @@
                     <iframe  name="Ticket"  id="ticketWebSite"  scrolling="auto" style="width:95%;height:600px" :src="event.TICKETURL"></iframe>
                   </div>
                 </el-tab-pane>
+                <el-tab-pane label="Messages New">
+                  <div>
+                    <el-form-item label="Send a Direct Message to Submitter">
+                      <el-input type="textarea" v-model="message" :rows=4 ></el-input>
+                    </el-form-item>
+                    <el-select v-model="sender" placeholder="Select Sender" v-if="message">
+                      <el-option
+                        v-for="item in options"
+                        :key="item.value"
+                        :label="item.label"
+                        :value="item.value">
+                      </el-option>
+                    </el-select>
+                    <div class="submissionButtons" v-if="!edit" >
+                      <button v-if="message" class="btn-secondary subbutton" @click="sendMessage">Send this Message to the Submitter</button>
+                      <br />
+                    </div>
+                  </div>
+                </el-tab-pane>
                 <el-tab-pane label="Save/Edit Tools">
                   <div v-if="newEventMode">
                     <el-button style="background-color: lightgreen" @click="postEvent">Create this Event</el-button>
@@ -327,7 +346,19 @@
         newVenueID:'',
         editsSaved:false,
         newEventMode:false,
-        brandNewEventMode:false
+        brandNewEventMode:false,
+          message:'',
+          options: [{
+              value: 'sfartseditor@gmail.com',
+              label: 'Catherinec'
+          }, {
+              value: 'sfartsmonthly@gmail.com',
+              label: 'Geraldine'
+          }, {
+              value: 'lrlarson@larsonassoc.org',
+              label: 'Larry'
+          },  ],
+          sender: ''
 
 
       }
@@ -347,6 +378,59 @@
           })
 
       },
+        sendMessage:function(){
+            var vm = this;
+
+            if (!vm.sender){
+                alert('Please select a sender');
+                return;
+            }
+
+
+
+            $.ajax({
+                    url: dataURL,
+                    data: {
+                        email:vm.eventDetails[0].EMAIL,
+                        text:vm.message,
+                        type:'New Event Question',
+                        Sender:vm.sender,
+                        title:vm.eventDetails[0].EVENT_NAME,
+                        method: 'messageToSubmitter',
+                        returnFormat: 'json'
+                    },
+                    method: 'GET',
+                    dataType: "json",
+                    success: function (d, r, o) {
+                        console.log('in  message success');
+                        vm.message = 'sent';
+                        alert('success') ;
+
+                    },
+                    error: function (jqXHR, exception) {
+                        var msg = '';
+                        if (jqXHR.status === 0) {
+                            msg = 'Not connect.\n Verify Network.';
+                        } else if (jqXHR.status == 404) {
+                            msg = 'Requested page not found. [404]';
+                        } else if (jqXHR.status == 500) {
+                            msg = 'Internal Server Error [500].';
+                        } else if (exception === 'parsererror') {
+                            msg = 'Requested JSON parse failed.';
+                        } else if (exception === 'timeout') {
+                            msg = 'Time out error.';
+                        } else if (exception === 'abort') {
+                            msg = 'Ajax request aborted.';
+                        } else {
+                            msg = 'Uncaught Error.\n' + jqXHR.responseText;
+                        }
+                        alert(msg);
+                    },
+                }
+            )
+
+
+        },
       blankClick:function(){
        //this.$parent.selectedComponent = 'BlankEvent';
         eventBus.blankEventWasClicked(this.selectedOrg);

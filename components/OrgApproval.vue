@@ -121,7 +121,7 @@
             <br />
 
 
-            <button class="btn-success subbutton" @click="insertNewOrg"  >Approve and Post This Organzation</button>
+            <button class="btn-success subbutton" @click="insertNewOrg"  >Approve and Post This Organization</button>
             <br />
 
 
@@ -245,7 +245,7 @@
               success: function (d, r, o) {
                 console.log('in  message success');
                 vm.message = 'sent';
-
+                  alert('success') ;
               },
               error: function (jqXHR, exception) {
                 var msg = '';

@@ -31,6 +31,7 @@
               <th scope="col">Event</th>
               <th scope="col">Start Date</th>
               <th scope="col">Submitter</th>
+              <th scope="col">Edited</th>
             </tr>
           </thead>
           <tbody>
@@ -39,6 +40,7 @@
               <td>{{event.EVENT_NAME}}</td>
               <td>{{event.STARTDATE | moment("dddd, MMMM Do")}}</td>
               <td>{{event.EMAIL}}</td>
+              <td>{{event.EMAILSENT}}</td>
             </tr>
           </tbody>                                 `
         </table>

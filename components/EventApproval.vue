@@ -42,6 +42,31 @@
       </el-col>
 
       <el-col :span="18">
+        <el-row>
+          <div>
+            <div>
+              <div class="currentPostings">
+                Enter optional message/question for submitter
+              </div>
+              <el-input type="textarea" v-model="message" :rows=2 ></el-input>
+
+              <el-select v-model="sender" placeholder="Select Sender" v-if="message">
+                <el-option
+                  v-for="item in options"
+                  :key="item.value"
+                  :label="item.label"
+                  :value="item.value">
+                </el-option>
+              </el-select>
+              <div class="submissionButtons" v-if="!edit" >
+                <button v-if="message" class="btn-secondary subbutton" @click="sendMessage2">Send this Message to the Submitter</button>
+                <br />
+              </div>
+            </div>
+          </div>
+        </el-row>
+      </el-col>
+      <el-col :span="18">
         <el-form >
           <el-row :gutter="17">
           <el-col :span="8">
@@ -224,6 +249,8 @@
                   <iframe  name="Ticket"  id="ticketWebSite"  scrolling="auto" style="width:95%;height:600px" :src="event.TICKETURL"></iframe>
                 </div>
               </el-tab-pane>
+
+
               <el-tab-pane label="Save/Edit Tools">
                 <div>
                   <el-button style="background-color: lightgreen" @click="postEvent">Post this event on the site</el-button>
@@ -243,6 +270,7 @@
     </div>
     </el-row>
   </div>
+
 </template>
 
 <script>
@@ -262,7 +290,20 @@
             eventsForOrg:[],
             disciplines:[],
             disciplines2:[],
-            payload:[]
+            payload:[],
+              message:'',
+              options: [{
+                  value: 'sfartseditor@gmail.com',
+                  label: 'Catherinec'
+              }, {
+                  value: 'sfartsmonthly@gmail.com',
+                  label: 'Geraldine'
+              }, {
+                  value: 'lrlarson@larsonassoc.org',
+                  label: 'Larry'
+              }  ],
+              sender: '',
+              edit:false
 
           }
         },
@@ -270,6 +311,64 @@
           selectedEventID:''
       },
       methods: {
+
+          sendMessage2:function(){
+
+
+
+                var vm = this;
+
+                if (!vm.sender){
+                    alert('Please select a sender');
+                    return;
+                }
+
+
+
+                $.ajax({
+                        url: dataURL,
+                        data: {
+                            email:vm.eventDetails[0].EMAIL,
+                            text:vm.message,
+                            type:'New Event Question',
+                            Sender:vm.sender,
+                            title:vm.eventDetails[0].EVENT_NAME,
+                            method: 'messageToSubmitter',
+                            returnFormat: 'json'
+                        },
+                        method: 'GET',
+                        dataType: "json",
+                        success: function (d, r, o) {
+                            console.log('in  message success');
+                            vm.message = 'sent';
+
+
+                        },
+                        error: function (jqXHR, exception) {
+                            var msg = '';
+                            if (jqXHR.status === 0) {
+                                msg = 'Not connect.\n Verify Network.';
+                            } else if (jqXHR.status == 404) {
+                                msg = 'Requested page not found. [404]';
+                            } else if (jqXHR.status == 500) {
+                                msg = 'Internal Server Error [500].';
+                            } else if (exception === 'parsererror') {
+                                msg = 'Requested JSON parse failed.';
+                            } else if (exception === 'timeout') {
+                                msg = 'Time out error.';
+                            } else if (exception === 'abort') {
+                                msg = 'Ajax request aborted.';
+                            } else {
+                                msg = 'Uncaught Error.\n' + jqXHR.responseText;
+                            }
+                            alert(msg);
+                        },
+                    }
+                )
+
+
+          },
+
         fetchEventDetails: function () {
           var vm = this;
           console.log('in event edit -- selectedEventID = ' + vm.selectedEventID);
@@ -285,12 +384,15 @@
 
 
 
+
+
         weeklyChecked:function(){
           var vm = this;
 
           vm.eventDetails[0].PERFORMING_ARTS_EVENT = false
 
         },
+
         specificDatesChecked:function(){
           var vm = this;
 
