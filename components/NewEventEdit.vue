@@ -107,6 +107,13 @@
                 <el-form-item label="Event Description">
                   <el-input type="textarea" v-model="event.EVENT_DESCRIPTION" :rows=6 ></el-input>
                 </el-form-item>
+
+                <el-form-item label="Original Submitter">
+                  <el-input  v-model="event.EMAIL"  ></el-input>
+                </el-form-item>
+                <el-form-item label="SF/Arts Submitter">
+                  <el-input  v-model="event.EDITOR"  ></el-input>
+                </el-form-item>
               </el-col>
               <el-col :span="8">
                 <br />
