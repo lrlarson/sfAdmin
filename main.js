@@ -41,6 +41,9 @@ export const eventBus = new Vue ({
     },
     blankEventWasClicked:function (orgID) {
         this.$emit('blankEventWasClicked',orgID);
+    },
+    orgWasSelected:function (orgID) {
+       this.$emit('orgWasSelected', orgID);
     }
 
   },

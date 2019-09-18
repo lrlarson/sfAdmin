@@ -16,6 +16,10 @@
        <br />
        <button type="button" class="btn btn-secondary" @click="goToEditEvents" >Go To Edit Events</button>
        <br />
+       <br />
+       <button type="button" class="btn btn-secondary" @click="goToRecentEvents" >Go To Recently Approved Events</button>
+       <br />
+       <br />
      </div>
     <div class="col-9">Submitted Events - click event to approve/edit/delete
       <br />
@@ -115,6 +119,9 @@
           console.log('edit events clicked')
           this.$parent.selectedComponent = 'NewEventEdit';
         },
+        goToRecentEvents:function(){
+            this.$parent.selectedComponent = 'RecentEventEntries';
+        } ,
         getCountOfUserOrgs:function(){
           var vm = this;
           axios.get(dataURL + '?method=getCountUserOrgs')

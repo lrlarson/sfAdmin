@@ -12,6 +12,7 @@ import OrgApproval from './components/OrgApproval'
 import VenueApproval from './components/VenueApproval'
 import NewEventEdit from './components/NewEventEdit'
 import BlankEvent from './components/BlankEvent'
+import RecentEventEntries from "./components/RecentEventEntries";
 
 export default {
   name: 'App',
@@ -22,7 +23,8 @@ export default {
     OrgApproval,
     VenueApproval,
     NewEventEdit,
-    BlankEvent
+    BlankEvent,
+      RecentEventEntries
   }
 }
 </script>

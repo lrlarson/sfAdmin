@@ -353,6 +353,7 @@
         newVenueID:'',
         editsSaved:false,
         newEventMode:false,
+          knowOrgID:false,
         brandNewEventMode:false,
           message:'',
           options: [{
@@ -1104,6 +1105,12 @@
       this.getDisps2();
       this.getAllOrgs();
       this.getAllVenues();
+
+      eventBus.$on('orgWasSelected', (orgID) =>{
+          this.knowOrgID = true;
+          this.selectedOrgID = orgID;
+          this.getEventsForOrg(this.selectedOrgID);
+      })
        /*
       eventBus.$on('newEventIDAdded',(newEvent)=>{
         this.fetchEventDetails();

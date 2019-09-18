@@ -14,7 +14,8 @@
   import SignIn from './SignIn';
   import {eventBus} from "../main";
   import NewEventEdit from './NewEventEdit';
-  import BlankEvent from './BlankEvent'
+  import BlankEvent from './BlankEvent';
+  import RecentEventEntries from "./RecentEventEntries";
 
   export default {
         name: "Holder",
@@ -36,7 +37,8 @@
           VenueApproval:VenueApproval,
           SignIn:SignIn,
           NewEventEdit:NewEventEdit,
-          BlankEvent:BlankEvent
+          BlankEvent:BlankEvent,
+          RecentEventEntries:RecentEventEntries
       },
       created(){
 
