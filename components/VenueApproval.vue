@@ -161,16 +161,16 @@
         loading: false,
         states:[],
         message:'',
-        options: [{
-          value: 'margo.crabtree@gmail.com',
-          label: 'Margo'
-        }, {
-          value: 'sfam@sbcglobal.net',
-          label: 'Betsy'
-        }, {
-          value: 'lrlarson@larsonassoc.org',
-          label: 'Larry'
-        },  ],
+          options: [{
+              value: 'sfartseditor@gmail.com',
+              label: 'Catherine'
+          }, {
+              value: 'sfartsmonthly@gmail.com',
+              label: 'Geraldine'
+          }, {
+              value: 'lrlarson@larsonassoc.org',
+              label: 'Larry'
+          },  ],
         sender: '' ,
         approval:true ,
         edit:false,

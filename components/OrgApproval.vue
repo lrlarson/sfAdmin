@@ -166,7 +166,7 @@
             message:'',
             options: [{
               value: 'sfartseditor@gmail.com',
-              label: 'Catherinec'
+              label: 'Catherine'
             }, {
               value: 'sfartsmonthly@gmail.com',
               label: 'Geraldine'
