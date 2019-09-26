@@ -20,6 +20,9 @@
        <button type="button" class="btn btn-secondary" @click="goToRecentEvents" >Go To Recently Approved Events</button>
        <br />
        <br />
+       <button type="button" class="btn btn-secondary" @click="goToPodStatus" >Go To Pod Status</button>
+       <br />
+       <br />
      </div>
     <div class="col-9">Submitted Events - click event to approve/edit/delete
       <br />
@@ -122,6 +125,9 @@
         goToRecentEvents:function(){
             this.$parent.selectedComponent = 'RecentEventEntries';
         } ,
+         goToPodStatus:function(){
+           this.$parent.selectedComponent = 'PodStatus';
+         },
         getCountOfUserOrgs:function(){
           var vm = this;
           axios.get(dataURL + '?method=getCountUserOrgs')

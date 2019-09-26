@@ -16,6 +16,7 @@
   import NewEventEdit from './NewEventEdit';
   import BlankEvent from './BlankEvent';
   import RecentEventEntries from "./RecentEventEntries";
+  import PodStatus from "./PodStatus";
 
   export default {
         name: "Holder",
@@ -38,7 +39,8 @@
           SignIn:SignIn,
           NewEventEdit:NewEventEdit,
           BlankEvent:BlankEvent,
-          RecentEventEntries:RecentEventEntries
+          RecentEventEntries:RecentEventEntries,
+          PodStatus:PodStatus
       },
       created(){
 

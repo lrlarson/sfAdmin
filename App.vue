@@ -13,6 +13,7 @@ import VenueApproval from './components/VenueApproval'
 import NewEventEdit from './components/NewEventEdit'
 import BlankEvent from './components/BlankEvent'
 import RecentEventEntries from "./components/RecentEventEntries";
+import PodStatus from "./components/PodStatus";
 
 export default {
   name: 'App',
@@ -24,7 +25,8 @@ export default {
     VenueApproval,
     NewEventEdit,
     BlankEvent,
-      RecentEventEntries
+      RecentEventEntries,
+      PodStatus
   }
 }
 </script>
