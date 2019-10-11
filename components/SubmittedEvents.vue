@@ -23,6 +23,9 @@
        <button type="button" class="btn btn-secondary" @click="goToPodStatus" >Go To Pod Status</button>
        <br />
        <br />
+       <button type="button" class="btn btn-secondary" @click="goToBadSummaries" >Go To Duplicated Summaries</button>
+       <br />
+       <br />
      </div>
     <div class="col-9">Submitted Events - click event to approve/edit/delete
       <br />
@@ -67,6 +70,7 @@
   import VenueApproval from './VenueApproval'
   import {dataURL} from "../main";
   import EventEdit from './EventApproval'
+  import BadSummaries from "./BadSummaries";
 
   export default {
       name: "SubmittedEvents",
@@ -128,6 +132,9 @@
          goToPodStatus:function(){
            this.$parent.selectedComponent = 'PodStatus';
          },
+        goToBadSummaries:function(){
+          this.$parent.selectedComponent = 'BadSummaries';
+        },
         getCountOfUserOrgs:function(){
           var vm = this;
           axios.get(dataURL + '?method=getCountUserOrgs')

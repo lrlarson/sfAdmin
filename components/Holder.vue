@@ -17,6 +17,7 @@
   import BlankEvent from './BlankEvent';
   import RecentEventEntries from "./RecentEventEntries";
   import PodStatus from "./PodStatus";
+  import BadSummaries from "./BadSummaries";
 
   export default {
         name: "Holder",
@@ -40,7 +41,8 @@
           NewEventEdit:NewEventEdit,
           BlankEvent:BlankEvent,
           RecentEventEntries:RecentEventEntries,
-          PodStatus:PodStatus
+          PodStatus:PodStatus,
+          BadSummaries:BadSummaries
       },
       created(){
 
@@ -56,7 +58,7 @@
         }),
         eventBus.$on('submissionRowWasClicked',(id)=>{
           this.selectedEventID = id;
-          //alert('received event'+ this.selectedEventID);
+          alert('received event'+ this.selectedEventID);
           this.selectedComponent = 'EventEdit';
         }),
         eventBus.$on('returnToSubmissionsPage',()=>{
@@ -75,6 +77,13 @@
             console.log('new id received' + id);
             this.newEventID=id;
             this.selectedComponent = 'SubmittedEvents';
+          }) ,
+          eventBus.$on('orgWasSelected',(org_num)=>{
+            alert('event bus called' + org_num);
+            this.orgID = org_num;
+            console.log('orgWasSelected' + org_num);
+
+            //this.selectedComponent = 'SubmittedEvents';
           }) ,
           this.$root.$on('NewIdAdded', data => {
             console.log('new root :' +  data);

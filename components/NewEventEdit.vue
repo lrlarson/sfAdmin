@@ -1107,6 +1107,7 @@
       this.getAllVenues();
 
       eventBus.$on('orgWasSelected', (orgID) =>{
+          alert('callback');
           this.knowOrgID = true;
           this.selectedOrgID = orgID;
           this.getEventsForOrg(this.selectedOrgID);
