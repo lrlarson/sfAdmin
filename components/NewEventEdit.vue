@@ -366,7 +366,9 @@
               value: 'lrlarson@larsonassoc.org',
               label: 'Larry'
           },  ],
-          sender: ''
+          sender: '',
+        selectedOrgID:'' ,
+        selectedOrg:''
 
 
       }
@@ -1109,8 +1111,8 @@
       eventBus.$on('orgWasSelected', (orgID) =>{
           alert('callback');
           this.knowOrgID = true;
-          this.selectedOrgID = orgID;
-          this.getEventsForOrg(this.selectedOrgID);
+          this.selectedOrg = orgID;
+          this.getEventsForOrg(this.selectedOrg);
       })
        /*
       eventBus.$on('newEventIDAdded',(newEvent)=>{

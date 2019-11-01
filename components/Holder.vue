@@ -47,7 +47,7 @@
       created(){
 
         eventBus.$on('blankEventWasClicked',(orgID => {
-                console.log('bblank was clicked  ' + orgID);
+                //console.log('bblank was clicked  ' + orgID);
                 this.orgID = orgID;
                 this.selectedComponent = BlankEvent;
           })
@@ -58,7 +58,7 @@
         }),
         eventBus.$on('submissionRowWasClicked',(id)=>{
           this.selectedEventID = id;
-          alert('received event'+ this.selectedEventID);
+         // alert('received event'+ this.selectedEventID);
           this.selectedComponent = 'EventEdit';
         }),
         eventBus.$on('returnToSubmissionsPage',()=>{
@@ -74,12 +74,12 @@
             this.selectedComponent = 'OrgApproval';
           }),
           eventBus.$on('newEventIDAdded',(id)=>{
-            console.log('new id received' + id);
+           // console.log('new id received' + id);
             this.newEventID=id;
             this.selectedComponent = 'SubmittedEvents';
           }) ,
           eventBus.$on('orgWasSelected',(org_num)=>{
-            alert('event bus called' + org_num);
+           // alert('event bus called' + org_num);
             this.orgID = org_num;
             console.log('orgWasSelected' + org_num);
 
